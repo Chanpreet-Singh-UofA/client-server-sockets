@@ -1,0 +1,14 @@
+.TH SERVER "1 Nov 2021"
+.SH NAME
+server \- start the server to establish connection and receive/send messages
+.SH SYNOPSIS
+\/server <port>
+.SH DESCRIPTION
+The server use the port to start listening to it for a client to try to make the connection with the server via its port. Our server is able to connect with multiple clients without using threads at the same time. A maximum of 10 clients can connect with our server at any given time. Server receive a T value which it gives to trans() to process and after processing the server send D (done) message to client to denote that T has been processed and another T could be sent. The server wait for uptown 30 seconds for clients to make connections, after 30 seconds the server stop listening the port for clients and end the program. 
+.SS Options
+.TP
+Port 5000-64000
+.SH "SEE ALSO"
+client.man page
+.SH BUGS
+No identified bug.

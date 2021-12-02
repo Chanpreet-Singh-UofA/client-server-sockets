@@ -1,0 +1,47 @@
+CMPUT 379 Winter 2021
+Assignment 3 Client-Server / Monitoring
+
+Name: Chanpreet Singh
+ID: 1576137
+
+Files: 
+	* client.cpp
+	* server.cpp
+	* transleep.cpp
+	* client.hpp
+	* server.hpp
+	* transleep.hpp
+	* client.man
+	* server.man
+	* makefile
+	* README
+
+Compile and Run instructions: 
+
+Use Terminal, and type "make"
+The client, and server should automatically compile along with transleep file. 
+To run server: ./server <port> 
+To run client: ./client <port> <ipAddress of server> <inputs or input file>
+
+To read the client man page: groff -Tascii -man client.man | more 
+To read the server man page: groff -Tascii -man server.man | more 
+
+Example:
+	make
+	./server 6000
+	./client 6000 127.0.0.1 <inputfile
+
+
+Assumptions:
+I used select to handle multiple clients for a single server. To write into file, I used ofstream as fprint was giving few errors to write few things. Even though the client and server show time along with milliseconds, however the  summary calculate only on minutes bases and do not account for seconds, this is one of the thing that I had to compromise as millisecond calculation was not working for me. A huge part of code is taken from online sources which is general client/server codes but however, I have cited my sources below. 
+
+Summary: 
+We start the server with a port number between 5,000-64,000, then the server listen to that port for upto a max of 30 sec. The clients can connect with the server by trying to make connection with server port and IP Address. At a given time unto a max of 10 clients can connect with the server. The user can give client the inputs via terminal or an input file, the inputs can be only T<number> or S<number>, if the client read S then it call sleep() and the client stops until sleep() is finished, and if client reads T then it send the <number> next to T to the server for processing. The server take the <number> that client sent and give it to trans() and once trans() finish processing, the server send a D message back to client, so the client could send the next T. Both client and server also write into files, to show the overall processing as per the assignment requirements. 
+
+
+Sources citing: 
+
+binarytides.com/server-client-example-c-sockets-linux
+https://www.geeksforgeeks.org/socket-programming-in-cc-handling-multiple-clients-on-server-without-multi-threading/
+https://www.geeksforgeeks.org/socket-programming-cc/?ref=lbp
+https://www.linuxjournal.com/article/1158

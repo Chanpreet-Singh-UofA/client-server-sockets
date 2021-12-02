@@ -1,0 +1,16 @@
+.TH CLIENT "1 Nov 2021"
+.SH NAME
+client \- start the client to establish connection and send messages
+.SH SYNOPSIS
+\/client <port> <IP Address> <input or inputfile>
+.SH DESCRIPTION
+The client establish a connection with server. The client need to provide port to which server is listening, the port need to be between 5000 and 64000. Then the client also need to give server IP address to establish the connection. Once the connection is made, then the client will start analyzing the inputs given from terminal or the file. If a input start with S then the client call sleep() and if the input start with T then the client send the following number to server, so the server could call trans(). After processing the T, the server send client a done message, only then the client send another T. 
+.SS Input Options
+.TP
+<input> T1 T5 S4...... Each in new line with an enter pressed. 
+.TP
+<inputfile> input file name which contain T1 T5 S4....
+.SH "SEE ALSO"
+server.man page
+.SH BUGS
+No identified bug.
